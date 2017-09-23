@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="PokemonApp">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Фреймворк AngularJS / Нетология</title>
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="../node_modules/angular-route/angular-route.js"></script>
+        <script src="../node_modules/angular-resource/angular-resource.js"></script>
+        <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-default" href="#!/">Главная</a>
+                        <a class="btn btn-default" href="#!/pokemons">Покемоны</a>
+                        <a class="btn btn-default" href="#!/barries">Ягоды</a>
+                        <a class="btn btn-default" href="#!/create">Добавить нового</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <ng-view></ng-view>
+
+        </div>
+        <!--<script src="src/Barries/src/js/app.js"></script>-->
+        <script>
+            var APP_ID = '43506E67-2175-5CD0-FF6E-2AAE8BD61400';
+            var API_KEY = '0D056653-8F17-B9B2-FF1F-F2F3A8AA0F00';
+
+            Backendless.serverURL = 'https://api.backendless.com';
+            Backendless.initApp(APP_ID, API_KEY);
+
+            Backendless.Data.of( "TestTable" ).save( { foo:"bar" } )
+                    .then( function( obj ) {
+                        console.log( "object saved. objectId " + obj.objectId )
+                    } )
+                    .catch( function( error ) {
+                        console.log( "got error - " + error )
+                    })
+        </script>
+        <script src="src/PokemonApp.js"></script>
+        <script src="src/CreatePokemon/CreatePokemonCtrl.js"></script>
+        <script src="src/PokemonList/PokemonListCtrl.js"></script>
+        <script src="src/BarriesList/BarriesListCtrl.js"></script>
+        <script src="src/PokemonDetail/PokemonDetailCtrl.js"></script>
+        <script src="src/PokemonsService/PokemonsService.js"></script>
+        <script src="src/BarriesService/BarriesService.js"></script>
+        <script src="src/EditPokemon/EditPokemonCtrl.js"></script>
+
+
+    </body>
+
+</html>
